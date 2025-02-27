@@ -7,7 +7,7 @@ export function useRefHistory<T>(source: Ref<T>) {
     history.value.push(source.value);
   };
   const reset = () => {
-    history.value = [history.value[0]];
+    history.value = [source.value];
   };
   return { history, commit, reset };
 }
