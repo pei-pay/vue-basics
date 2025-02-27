@@ -1,11 +1,8 @@
-import { type Ref, ref } from 'vue';
+import { type Ref, ref, unref } from 'vue';
 
-export function useRefHistory<T>(
-  source: Ref<T>
-) {
-  // const history: Ref<UnwrapRefSimple<T>[], T[] | UnwrapRefSimple<T>[]>
-  // const history = ref<T[]>([]);
-  const history: Ref<T[]> = ref([]);
+export function useRefHistory<T>(source: Ref<T>) {
+  // Comment why it needs assertion
+  const history = ref<T[]>([source.value]) as Ref<T[]>;
   const commit = () => {
     history.value.push(source.value);
   };
