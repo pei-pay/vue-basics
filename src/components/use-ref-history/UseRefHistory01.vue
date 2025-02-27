@@ -2,8 +2,8 @@
 import { useCounter } from '@/composables/use-counter';
 import { useRefHistory } from '@/composables/use-ref-history/01';
 
-const { count, inc, dec, reset: resetCounter } = useCounter();
-const { history, commit, reset: resetHistory } = useRefHistory(count);
+const { count, inc, dec } = useCounter();
+const { history, commit, clear } = useRefHistory(count);
 </script>
 
 <template>
@@ -17,10 +17,10 @@ const { history, commit, reset: resetHistory } = useRefHistory(count);
     </button>
     <span style="margin: 0 8px;">/</span>
     <button @click="commit()">
-      Commit history
+      Commit
     </button>
-    <button @click="resetHistory()">
-      Reset history
+    <button @click="clear()">
+      Clear
     </button>
     <br>
     <br>
